@@ -33,7 +33,7 @@ const App = () => {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
+          tabBarIcon: ({ color, size }) => {
             let icon;
 
             if (route.name === 'Liste') {
@@ -42,12 +42,11 @@ const App = () => {
               icon = <IconAntDesign name='adduser' color={color} size={size} />
             } else if(route.name === 'Chercher') {
               icon = <IconMaterial name='account-search-outline' color={color} size={size} />
-            } else if(route.name === 'Editer') {
+            } else if(route.name === 'Modifier') {
               icon = <IconMaterial name='account-edit-outline' color={color} size={size} />
             }
 
-            // You can return any component that you like here!
-            return icon //<Icon name={iconName} size={size} color={color} />;
+            return icon
           },
         })}
         tabBarOptions={{
@@ -58,7 +57,7 @@ const App = () => {
         <Tab.Screen name="Liste" component={ indexLayout } />
         <Tab.Screen name="Ajouter" component={ AddLayout } />
         <Tab.Screen name="Chercher" component={ SearchLayout } />
-        <Tab.Screen name="Editer" component={ EditLayout } />
+        <Tab.Screen name="Modifier" component={ EditLayout } />
       </Tab.Navigator>
     </NavigationContainer>
   )

@@ -12,7 +12,8 @@ const EditLayout = ({ navigation }) => {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [client, setClient] = useState(null)
-
+  const [nameExists, setNameExists] = useState(false)
+  
   // Text input references in the DOM
   const inputNameRef = useRef()
   const inputPhoneRef = useRef()
@@ -143,7 +144,7 @@ const EditLayout = ({ navigation }) => {
         </View>
         <View style={{flex: 8.5, justifyContent: 'center'}}>
           <View style={styles.editView}>
-            <Text style={styles.text}>Éditer un client</Text>
+            <Text style={styles.text}>Modifier un client</Text>
             <InputName
               ref={inputNameRef}
               placeholder={'Nom du client'}
