@@ -13,7 +13,7 @@ const EditLayout = ({ navigation }) => {
   const [phone, setPhone] = useState('')
   const [client, setClient] = useState(null)
   const [nameExists, setNameExists] = useState(false)
-  
+
   // Text input references in the DOM
   const inputNameRef = useRef()
   const inputPhoneRef = useRef()
@@ -78,7 +78,6 @@ const EditLayout = ({ navigation }) => {
    * @param {*} id number 
    */
   const update = async (id) => {
-    // TODO verificar se phone vazio
     // Verify if the phone is empty
     if(!phone) {
       showToastError('Insérer un numéro!')
