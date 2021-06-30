@@ -12,8 +12,8 @@ const EditLayout = ({ navigation }) => {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [client, setClient] = useState(null)
-  const [nameExists, setNameExists] = useState(false)
 
+  // Text input references in the DOM
   const inputNameRef = useRef()
   const inputPhoneRef = useRef()
 
@@ -49,6 +49,11 @@ const EditLayout = ({ navigation }) => {
     navigation.navigate('Liste')
   }
 
+  /**
+   * Function that searches in the database the name of the client to be edited.
+   * @param {*} name string with the name of the client.
+   * @returns void if there is an error.
+   */
   const searchName = async (name) => {
     // verify if the name is empty
     if(!name) {
@@ -68,33 +73,58 @@ const EditLayout = ({ navigation }) => {
   }
 
   /**
+   * Function that updates the client's name and phone with this id.
+   * @param {*} id number 
+   */
+  const update = async (id) => {
+    // TODO verificar se phone vazio
+    // Verify if the phone is empty
+    if(!phone) {
+      showToastError('Insérer un numéro!')
+      return
+    }
+
+    let result = await updateClient(name, phone, id)
+
+    if(result.rows.length > 0) {
+      showToastSuccess('Client modifié.')
+    } else {
+      showToastError('Erreur, pas de modification')
+    }
+  }
+
+  /**
    * Funtion who renders the button for searching and the button to save
    * @returns TouchableOpacity
    */
   const renderButtons = () => {
     if(!nameExists) {
-      return <TouchableOpacity
-                //onPress={() => searchEdit(name, setNameExists, setClient)}
-                onPress={() => searchName(name)}
-            >
-              <Text style={styles.buttonAdd}>Chercher</Text>
-            </TouchableOpacity>
+      return (
+        <TouchableOpacity
+          onPress={() => searchName(name)}
+        >
+          <Text style={styles.buttonAdd}>Chercher</Text>
+        </TouchableOpacity>
+      )
     } else {
-      return <TouchableOpacity
-                onPress={() => {
-                  let id_client = client.id_client
+      return (
+        <TouchableOpacity
+          onPress={() => {
+            let id_client = client.id_client
 
-                  updateClient(name, phone, id_client)
-                  reset()
-                }}
-            >
-              <Text style={styles.buttonAdd}>Sauver</Text>
-            </TouchableOpacity>
+            update(id_client)
+            reset()
+          }}
+        >
+          <Text style={styles.buttonAdd}>Sauver</Text>
+        </TouchableOpacity>
+      )
     }
   }
 
   /**
-   * 
+   * Function that renders phone component.
+   * @returns JSX component or null if there's not a client
    */
   const renderPhone = () => {
     if(client){
@@ -104,6 +134,7 @@ const EditLayout = ({ navigation }) => {
     return null
   }
 
+  // TODO criar uma segurança, perguntar se tem a certeza da modificaçâo.
   return(
     <ImageBackground style={styles.image} source={require('../assets/contact.jpg')}>
       <View style={styles.container}>

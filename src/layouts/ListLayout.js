@@ -8,10 +8,25 @@ import { listUsers } from '../model/model';
 const ListLayout = ({ onpress, letter }) => {
   const[list, setList] = useState([])
 
-  useEffect(() => {
-    listUsers(setList, letter)
+  /**
+   * Load from the database the clients which name begins with the letter, used as parameter.
+   */
+  useEffect(async () => {
+    const users = []
+    let result = await listUsers(letter)
+
+    for(let user = 0; user < result.rows.length; user++) {
+      users.push(result.rows.item(user))
+    }
+
+    setList(users)
   }, [])
 
+  /**
+   * Function who returns a JSX component Client (name, phone) to be rendered in the flatlist.
+   * @param {*} item object with name and phone.
+   * @returns JSX component Client.
+   */
   const renderItem = ({ item }) => (
     <Client
       name={item.name}
@@ -19,6 +34,10 @@ const ListLayout = ({ onpress, letter }) => {
     />
   )
 
+  /**
+   * Fonction who returns the component header of the flatlist.
+   * @returns JSX component header.
+   */
   const headerComponent = () => {
     return (
       <View  style={styles.headerContainer}>
@@ -27,6 +46,10 @@ const ListLayout = ({ onpress, letter }) => {
     )
   }
 
+  /**
+   * Fonction who returns the component footer of the flatlist.
+   * @returns JSX component footer.
+   */
   const footerComponent = () => {
     return (
       <View>
@@ -38,6 +61,10 @@ const ListLayout = ({ onpress, letter }) => {
     )
   }
 
+  /**
+   * Fonction who returns the component separator in the flatlist.
+   * @returns JSX component separator.
+   */
   const separatorComponent = () => {
     return <View style={styles.separatorLine} />
   }

@@ -6,7 +6,6 @@ import { searchPhone } from '../model/model'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import InputName from './InputName'
 import InputPhone from './InputPhone'
-import { showToastError } from './Toast'
 
 const Search = () => {
   const [name, setName] = useState('')
@@ -24,15 +23,13 @@ const Search = () => {
   }
 
   /**
-   * 
+   * Function that searches in the database the client with his name.
    */
   const searchClient = async () => {
     let result = await searchPhone(name)
 
     if(result.rows.length > 0) {
       setClient({ name, phone: result.rows.item(0).phone})
-    } else {
-      showToastError('Il y a eu une erreur!')
     }
   }
 

@@ -65,9 +65,9 @@ const AddLayout = ({navigation}) => {
     let rowsAfected = addUser(name, phone)
 
     if(rowsAfected) {
-      showToastSuccess()
+      showToastSuccess('Enregistré.')
     } else {
-      showToastError()
+      showToastError('Erreur d\'enregistrement.')
     }
 
     // clear the inputs and navigate to home
