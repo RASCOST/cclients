@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, FlatList, Button, ImageBackground,  StyleSheet } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons'
+import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 
 import Client from '../components/Client'
 
@@ -50,7 +52,7 @@ const ListLayout = ({ onpress, letter }) => {
    * Fonction who returns the component footer of the flatlist.
    * @returns JSX component footer.
    */
-  const footerComponent = () => {
+  /* const footerComponent = () => {
     return (
       <View>
         <Button
@@ -59,7 +61,7 @@ const ListLayout = ({ onpress, letter }) => {
         />
       </View>
     )
-  }
+  } */
 
   /**
    * Fonction who returns the component separator in the flatlist.
@@ -71,13 +73,18 @@ const ListLayout = ({ onpress, letter }) => {
 
   return (
     <ImageBackground style={styles.image} source={require('../assets/contact.jpg')}>
-      <View>
+      <View style={styles.lisrContainer}>
+        <View style={styles.pressableContainer}>
+          <Pressable onPress={onpress}>
+            <Text style={styles.pressableText}><Icon style={styles.icon} name='arrow-back'/>index</Text>
+          </Pressable>
+        </View>
         <FlatList
           data={list}
           renderItem={renderItem}
           keyExtractor={item => String(item.id_client)}
           ListHeaderComponent={headerComponent}
-          ListFooterComponent={footerComponent}
+          //ListFooterComponent={footerComponent}
           ItemSeparatorComponent={separatorComponent}
         />
       </View>
@@ -86,8 +93,12 @@ const ListLayout = ({ onpress, letter }) => {
 }
 
 const styles = StyleSheet.create({
+  lisrContainer: {
+    flex: 1
+  },
   headerContainer: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    opacity: 0.9
   },
   separatorLine: {
     height: 2,
@@ -100,7 +111,23 @@ const styles = StyleSheet.create({
   },
   image: {
     flex:1
-  }
+  },
+  pressableContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignContent: 'center',
+    backgroundColor: '#7A3BB8',
+    opacity: 0.9
+  },
+  pressableText: {
+    fontSize: 18,
+    color: 'white',
+  },
+  icon: {
+    fontSize: 18,
+    color: 'white',
+    marginLeft: 5
+  },
 })
 
 export default ListLayout

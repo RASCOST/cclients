@@ -36,6 +36,8 @@ const indexLayout = () => {
       const alphabet = []
       let letter = ''
 
+      // Create an array with the Letter component from "a" to "y"
+      // the x letter is added in a separeted Letter component
       for(let letterInc = 0; letterInc < 25; letterInc++) {
         letter = String.fromCharCode(letterCode + letterInc)
         alphabet.push(<Letter key={letter} letter={letter} onpress={onPressLetter} />)

@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, Linking } from 'react-native'
 
 import Icon from 'react-native-vector-icons/Entypo'
 
+
+
 const Phone = ({ number }) => {
   const phoneCall = (phone) => {
     Linking.openURL("tel:" + phone)
