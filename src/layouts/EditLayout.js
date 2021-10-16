@@ -67,6 +67,7 @@ const EditLayout = ({ navigation }) => {
     // verify if the DB returns a client
     if(client.length > 0) {
       setNameExists(true)
+      setPhone(client.item(0).phone)
       setClient(client.item(0))
     } else {
       showToastError("Ce client n'existe pas!")
@@ -83,10 +84,10 @@ const EditLayout = ({ navigation }) => {
       showToastError('Insérer un numéro!')
       return
     }
-
+    console.log(name, phone)
     let result = await updateClient(name, phone, id)
 
-    if(result.rows.length > 0) {
+    if(result.rowsAffected > 0) {
       showToastSuccess('Client modifié.')
     } else {
       showToastError('Erreur, pas de modification')
@@ -147,7 +148,7 @@ const EditLayout = ({ navigation }) => {
             <InputName
               ref={inputNameRef}
               placeholder={'Nom du client'}
-              onchangetext={(name) => {setName(name)}}
+              onchangetext={(name) => setName(name)}
             />
             {
               renderPhone()
