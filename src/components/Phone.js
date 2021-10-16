@@ -1,13 +1,17 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Linking } from 'react-native'
 
 import Icon from 'react-native-vector-icons/Entypo'
 
 const Phone = ({ number }) => {
+  const phoneCall = (phone) => {
+    Linking.openURL("tel:" + phone)
+  }
+
   return (
     <View style={styles.container}>
       <Icon style={styles.icon} name='old-phone' />
-      <Text style={styles.text}>{number}</Text>
+      <Text onLongPress={() => phoneCall(number)} style={styles.text}>{number}</Text>
     </View>
   )
 }

@@ -7,8 +7,8 @@ import Phone from './Phone'
 const Client = ({ name, phone }) => {
   return (
     <View style={styles.container}>
-        <Name name={name} />
-        <Phone number={phone} />
+      <Name name={name} />
+      <Phone number={phone} />
     </View>
   )
 }
