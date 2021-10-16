@@ -37,7 +37,7 @@ export const addUser = (name, phone) => {
 export const listUsers = (letter) => {
   return new Promise((resolve, reject) => {
     db.transaction(tx => {
-      tx.executeSql('SELECT name, phone, id_client FROM clients WHERE name LIKE ?',
+      tx.executeSql('SELECT name, phone, id_client FROM clients WHERE name LIKE ? ORDER BY name ASC',
       [letter+'%'],
       (tx, results) => {
         resolve(results)
