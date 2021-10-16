@@ -50,6 +50,7 @@ const ListLayout = ({ onpress, letter }) => {
 
   /**
    * Fonction who returns the component footer of the flatlist.
+   * This function will be commented for illustrative purposes.
    * @returns JSX component footer.
    */
   /* const footerComponent = () => {
@@ -73,12 +74,14 @@ const ListLayout = ({ onpress, letter }) => {
 
   return (
     <ImageBackground style={styles.image} source={require('../assets/contact.jpg')}>
-      <View style={styles.lisrContainer}>
+      <View style={styles.listContainer}>
+
         <View style={styles.pressableContainer}>
           <Pressable onPress={onpress}>
             <Text style={styles.pressableText}><Icon style={styles.icon} name='arrow-back'/>index</Text>
           </Pressable>
         </View>
+
         <FlatList
           data={list}
           renderItem={renderItem}
@@ -87,13 +90,14 @@ const ListLayout = ({ onpress, letter }) => {
           //ListFooterComponent={footerComponent}
           ItemSeparatorComponent={separatorComponent}
         />
+
       </View>
     </ImageBackground>  
   )
 }
 
 const styles = StyleSheet.create({
-  lisrContainer: {
+  listContainer: {
     flex: 1
   },
   headerContainer: {

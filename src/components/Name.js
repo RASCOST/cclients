@@ -18,12 +18,12 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   text: {
-    fontSize: 26,
+    fontSize: 24,
     marginLeft: '25%'
   },
   icon: {
     color: '#7A3BB8',
-    fontSize: 24,
+    fontSize: 22,
     marginLeft: 5
   }
 })
