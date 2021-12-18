@@ -84,7 +84,7 @@ const EditLayout = ({ navigation }) => {
       showToastError('Insérer un numéro!')
       return
     }
-    console.log(name, phone)
+
     let result = await updateClient(name, phone, id)
 
     if(result.rowsAffected > 0) {
