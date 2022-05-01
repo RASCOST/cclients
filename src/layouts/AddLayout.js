@@ -51,7 +51,7 @@ const AddLayout = ({navigation}) => {
     // verify if the client already exists in th DB
     let existsName = await searchNameExists(name)
     let existsPhone = await searchPhoneExists(phone)
-  
+
     if(existsName.length > 0)
     {
       showToastError('Ce nom de client existe déjà!')
