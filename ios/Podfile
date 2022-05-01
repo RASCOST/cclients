@@ -8,6 +8,8 @@ target 'cclients' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+
   target 'cclientsTests' do
     inherit! :complete
     # Pods for testing
