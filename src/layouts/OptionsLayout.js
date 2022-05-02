@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Text, View } from 'react-native'
 import RNFS from 'react-native-fs'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import { allClients } from '../model/model'
 
