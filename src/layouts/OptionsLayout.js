@@ -6,9 +6,8 @@ import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import { allClients } from '../model/model'
 
 const OptionsLayout = () => {
-  const [clients, setClients] = useState([])
 
-  const wrFile = async (clientsArray, path) => {
+  const createCSV = async (clientsArray, path) => {
     try {
       let content = 'id_client,name,phone\n'
 
@@ -29,7 +28,7 @@ const OptionsLayout = () => {
 
     const result = await allClients()
 
-    wrFile(result, filePath)
+    createCSV(result, filePath)
   }
 
   return (
