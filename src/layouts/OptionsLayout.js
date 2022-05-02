@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, View } from 'react-native'
 import RNFS from 'react-native-fs'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
+import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons'
 import { allClients } from '../model/model'
 
 const OptionsLayout = () => {
@@ -33,7 +34,7 @@ const OptionsLayout = () => {
   return (
     <View>
         <Pressable onPress={exportDB}>
-          <Text>Exporter les données</Text>
+          <Text><IconMaterial name="database-export"/> Exporter les données</Text>
         </Pressable>
     </View>
   )
