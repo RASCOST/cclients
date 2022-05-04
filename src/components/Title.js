@@ -14,11 +14,11 @@ const Title = () => {
 
 const styles = StyleSheet.create({
   title: {
-    flex: 1,
+    //flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     padding: 5,
-    //height: 98,
+    height: '15%',
     backgroundColor: '#0BC4FF'
   },
   titleText: {
