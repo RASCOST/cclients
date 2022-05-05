@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 5,
-    height: '15%',
+    height: 85,
     backgroundColor: '#0BC4FF'
   },
   titleText: {

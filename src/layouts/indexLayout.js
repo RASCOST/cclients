@@ -67,9 +67,7 @@ const indexLayout = () => {
       >
       <ImageBackground style={styles.image} source={require('../assets/contact.jpg')}>
         <View style={styles.container}>
-          <View style={styles.titleView}>
-            <Title />
-          </View>
+          <Title />
           <View style={styles.searchView}>
             <Search />
           </View>
@@ -105,18 +103,16 @@ const indexLayout = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    //height: '100%',
     backgroundColor: 'rgba(255, 255, 255, 0.3)'
   },
   alphabetContainer: {
-    flex: 7,
+    flex: 1,
+    height: '100%',
     marginTop: 20
   },
-  titleView: {
-    flex: 1.5,
-    backgroundColor: 'red'
-  },
   searchView: {
-    flex: 1
+    height: 65
   },
   alphabet: {
     flexDirection: 'row',
@@ -124,8 +120,6 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    //resizeMode: "cover",
-    //justifyContent: "center",
   }
 })
 export default indexLayout
