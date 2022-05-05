@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Keyboard,  View, Text, TouchableOpacity, ToastAndroid, ImageBackground, StyleSheet } from 'react-native'
+import { Keyboard,  View, Text, TouchableOpacity, ImageBackground, StyleSheet } from 'react-native'
 
 import { addUser, searchNameExists, searchPhoneExists } from '../model/model'
 

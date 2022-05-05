@@ -8,6 +8,7 @@ import IconAntDesign from 'react-native-vector-icons/AntDesign'
 import { allClients } from '../model/model'
 
 import Title from '../components/Title'
+import { showToastSuccess, showToastError } from '../components/Toast'
 
 const OptionsLayout = () => {
 
@@ -21,14 +22,15 @@ const OptionsLayout = () => {
 
       await RNFS.writeFile(path, content, 'utf8')
 
+      showToastSuccess('Donées Exportés')
+
     } catch (error) {
-      console.log(error);
+      showToastError(error)
     }
   }
 
   const exportDB = async () => {
     const filePath = RNFS.DownloadDirectoryPath + '/clients.csv'
-    const all = []
 
     const result = await allClients()
 
@@ -39,7 +41,7 @@ const OptionsLayout = () => {
     <View style={styles.container}>
       <Title />
       <View style={styles.subTitle}>
-        <IconAntDesign name='setting' size={20} color={'rgb(205, 205, 205)'}/>
+        <IconAntDesign name='setting' size={30} color={'rgb(205, 205, 205)'}/>
         <Text style={styles.textSubTitle}>Options</Text>
       </View>
       <View style={styles.content}>
@@ -64,12 +66,13 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    height: '6%',
+    height: '8%',
     backgroundColor: 'rgb(155, 155, 155)',
     paddingLeft: 10
   },
   textSubTitle: {
-    fontSize: 20,
+    fontFamily: 'Cuprum-Regular',
+    fontSize: 30,
     marginLeft: 10,
     color: 'rgb(205, 205, 205)'
   },
