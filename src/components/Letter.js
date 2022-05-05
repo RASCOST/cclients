@@ -17,19 +17,12 @@ const Letter = ({ letter, onpress }) => {
 const styles = StyleSheet.create({
   container: {
     flexBasis: '20%',
-    //justifyContent: 'center',
-    //alignContent: 'center',
-    //width: '20%',
-    //height: '16.7%'
   },
   letter: {
     alignSelf: 'center',
-    //padding: 2,
-    //paddingBottom: 25,
     fontSize: 65,
     lineHeight: 72,
     fontFamily: 'CroissantOne-Regular',
-    
   }
 })
 export default Letter

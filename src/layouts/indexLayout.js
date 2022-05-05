@@ -103,7 +103,6 @@ const indexLayout = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //height: '100%',
     backgroundColor: 'rgba(255, 255, 255, 0.3)'
   },
   alphabetContainer: {
