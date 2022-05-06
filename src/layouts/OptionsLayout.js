@@ -1,16 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text, View, StyleSheet, Button } from 'react-native'
 import RNFS from 'react-native-fs'
 
 import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconAntDesign from 'react-native-vector-icons/AntDesign'
 
-import { allClients } from '../model/model'
+import { allClients, countClients } from '../model/model'
 
 import Title from '../components/Title'
 import { showToastSuccess, showToastError } from '../components/Toast'
 
 const OptionsLayout = () => {
+  const [count, setCountClients] = useState('')
+
+  useEffect(async () => {
+    let result = await countClients()
+    let test = result.rows.item(0)
+console.log(...test)
+    setCountClients(result.rows.item(0).count)
+  }, [])
 
   const createCSV = async (clientsArray, path) => {
     try {
@@ -53,6 +61,9 @@ const OptionsLayout = () => {
           title='Exporter'
           onPress={exportDB}
         />
+      </View>
+      <View>
+        <Text>Nombre de clients: {`${count}`} </Text>
       </View>
     </View>
   )

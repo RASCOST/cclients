@@ -8,6 +8,25 @@ const db = SQLite.openDatabase({ name: 'contacts.db', createFromLocation: '~www/
     //console.log('Erro ao abrir a base de dados:' + error)
   })
 
+export const countClients = () => {
+  return new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql('SELECT count(*) FROM clients',
+      [],
+      (tx, results) => {
+        resolve(results)
+      }),
+      error => {
+        reject(error)
+      }
+    })
+  })
+}
+
+/**
+ * Get all the clients to export in to a CSV file
+ * @returns promise with all the rows from the DB
+ */
 export const allClients = () => {
   return new Promise((resolve, reject) => {
     db.transaction(tx => {
