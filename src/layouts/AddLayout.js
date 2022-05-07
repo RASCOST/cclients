@@ -62,9 +62,9 @@ const AddLayout = ({navigation}) => {
     }
 
     // save in the DB the new client
-    let rowsAfected = addUser(name, phone)
+    let rowsAffected = addUser(name, phone)
 
-    if(rowsAfected) {
+    if(rowsAffected) {
       showToastSuccess('Enregistré.')
     } else {
       showToastError('Erreur d\'enregistrement.')
