@@ -94,7 +94,7 @@ const AddLayout = ({navigation}) => {
           <View style={styles.addView}>
             <Text style={styles.text}>Ajouter un client</Text>
             <InputName  ref={inputNameRef} placeholder={'Nom'} onchangetext={name => setName(name)}/>
-            <InputPhone ref={inputPhoneRef} placeholder={'Téléphone'} onchangetext={phone => setPhone(phone)}/>
+            <InputPhone ref={inputPhoneRef} placeholder={'Téléphone'} onchangetext={phone => setPhone(phone.replaceAll(/\s/g,'')) }/>
             <View style={styles.buttons}>
               <TouchableOpacity
                 onPress={save}
