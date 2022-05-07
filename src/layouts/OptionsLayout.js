@@ -15,9 +15,9 @@ const OptionsLayout = () => {
 
   useEffect(async () => {
     let result = await countClients()
-    let test = result.rows.item(0)
-console.log(...test)
-    setCountClients(result.rows.item(0).count)
+    let test = result.rows
+
+    setCountClients(result.rows.item(0)['count(*)'])
   }, [])
 
   const createCSV = async (clientsArray, path) => {
@@ -62,8 +62,12 @@ console.log(...test)
           onPress={exportDB}
         />
       </View>
-      <View>
-        <Text>Nombre de clients: {`${count}`} </Text>
+      <View style={styles.count}>
+        <View style={styles.countTextView}>
+          <IconMaterial name="counter" size={20}/>
+          <Text style={styles.countText}>Nombre d'enregistrements:</Text>
+        </View>
+        <Text style={styles.countNumber}>{`${count}`} </Text>
       </View>
     </View>
   )
@@ -101,6 +105,32 @@ const styles = StyleSheet.create({
   descriptionText: {
     marginLeft: 10,
     fontSize: 15
+  },
+  count: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  countTextView: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 10,
+  },
+  countText: {
+    marginLeft: 10,
+    fontSize: 15
+  },
+  countNumber: {
+    width: 82,
+    textAlign: 'center',
+    backgroundColor: '#2196F3',
+    marginRight: 10,
+    color: 'white',
+    fontWeight: 'bold',
+    padding: 2,
+    borderRadius: 2
   }
 
 })
