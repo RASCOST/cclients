@@ -60,10 +60,12 @@ const SearchLayout = ({ navigation }) => {
 
     if(name === undefined) {
       component =  <Text style={styles.textNoExists}>Ce numéro n'existe pas!</Text>
+      Keyboard.dismiss()
     } else if (name){
+      Keyboard.dismiss()
       component =  <InputName ref={inputNameRef} value={name} editable={false}/>
     }
-    
+
     return component
   }
 
