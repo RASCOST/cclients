@@ -85,6 +85,12 @@ const EditLayout = ({ navigation }) => {
       return
     }
 
+    // regexp valid number
+    if (phone.search(/(^\+?\d+$)/)) {
+      showToastError('Inserer um numèro valide!')
+      return
+    }
+
     let result = await updateClient(name, phone, id)
 
     if(result.rowsAffected > 0) {
@@ -129,7 +135,7 @@ const EditLayout = ({ navigation }) => {
    */
   const renderPhone = () => {
     if(client){
-      return <InputPhone ref={inputPhoneRef} value={client.phone} onchangetext={(phone) => setPhone(phone)}/>
+      return <InputPhone ref={inputPhoneRef} value={client.phone} onchangetext={(phone) => setPhone(phone.replaceAll(/\s/g,''))}/>
     }
 
     return null
