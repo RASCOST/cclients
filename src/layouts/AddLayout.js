@@ -42,9 +42,14 @@ const AddLayout = ({navigation}) => {
     }
 
     // verify if the input phone is empty
-    // TODO - regexp valid number
     if(!phone) {
       showToastError('Inserer le numèro de téléphone!')
+      return
+    }
+
+    // regexp valid number
+    if (phone.search(/(^\+?\d+$)/)) {
+      showToastError('Inserer um numèro valide!')
       return
     }
 
